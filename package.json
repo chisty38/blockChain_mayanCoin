@@ -2,5 +2,23 @@
   "dependencies": {
     "crypto-js": "^4.1.1",
     "elliptic": "^6.5.4"
-  }
+  },
+  "name": "blockchain",
+  "description": "��#\u0000 \u0000b\u0000l\u0000o\u0000c\u0000k\u0000C\u0000h\u0000a\u0000i\u0000n\u0000_\u0000m\u0000a\u0000y\u0000a\u0000n\u0000C\u0000o\u0000i\u0000n\u0000\r\u0000 \u0000",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chisty38/blockChain_mayanCoin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chisty38/blockChain_mayanCoin/issues"
+  },
+  "homepage": "https://github.com/chisty38/blockChain_mayanCoin#readme"
 }
