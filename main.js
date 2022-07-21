@@ -2,16 +2,17 @@ const {Blockchain, Transaction} = require('./blockchain');
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
-const myKey = ec.keyFromPrivate('hex');
+const myKey = ec.keyFromPrivate('ffb84ee4be70c99e82abcc14a1bbb956cfa706837d14f182972b82ef91542ee7');
 const myWalletAddress = myKey.getPublic('hex');
 
 
 let mayanCoin = new Blockchain();
-console.log('\n Balance of ' + mayanCoin.getBalanceofAddress(myWalletAddress));
-const tx1 = new Transaction(myWalletAddress, 'public key goes here', 10);
+mayanCoin.minePendingTransactions(myWalletAddress);
+console.log('\n Balance of ' + mayanCoin.getBalanceOfAddress(myWalletAddress));
+const tx1 = new Transaction(myWalletAddress, 'address 2', 100);
 tx1.signTransaction(myKey);
-mayanCoin.addtransaction(tx1);
-//console.log(JSON.stringify(mayanCoin, null, 4));
+mayanCoin.addTransaction(tx1);
+
 
 // mayanCoin.createtransaction(new Transaction('address1', 'address2', 100));
 // mayanCoin.createtransaction(new Transaction('address2', 'address1', 50));
@@ -19,12 +20,26 @@ mayanCoin.addtransaction(tx1);
 console.log('\n starting the miner .....');
 mayanCoin.minePendingTransactions(myWalletAddress);
 
-console.log('\n Balance of ' + mayanCoin.getBalanceofAddress(myWalletAddress));
+console.log('\n Balance of ' + mayanCoin.getBalanceOfAddress(myWalletAddress));
 
 
-mayanCoin.chain[1].transactions[0].amount = 1;
+// Create second transaction
+const tx2 = new Transaction(myWalletAddress, 'address1', 50);
+tx2.signTransaction(myKey);
+mayanCoin.addTransaction(tx2);
 
-console.log('Is chain valid ' + mayanCoin.isChainValid());
+// Mine block
+mayanCoin.minePendingTransactions(myWalletAddress);
+
+console.log();
+console.log(`Balance of xavier is ${mayanCoin.getBalanceOfAddress(myWalletAddress)}`);
+
+// Uncomment this line if you want to test tampering with the chain
+// savjeeCoin.chain[1].transactions[0].amount = 10;
+
+// Check if the chain is valid
+console.log();
+console.log('Blockchain valid?', mayanCoin.isChainValid() ? 'Yes' : 'No');
 
 
 
