@@ -11,7 +11,7 @@ console.log('\n Balance of ' + mayanCoin.getBalanceofAddress(myWalletAddress));
 const tx1 = new Transaction(myWalletAddress, 'public key goes here', 10);
 tx1.signTransaction(myKey);
 mayanCoin.addtransaction(tx1);
-console.log(JSON.stringify(mayanCoin, null, 4));
+//console.log(JSON.stringify(mayanCoin, null, 4));
 
 // mayanCoin.createtransaction(new Transaction('address1', 'address2', 100));
 // mayanCoin.createtransaction(new Transaction('address2', 'address1', 50));
@@ -20,6 +20,30 @@ console.log('\n starting the miner .....');
 mayanCoin.minePendingTransactions(myWalletAddress);
 
 console.log('\n Balance of ' + mayanCoin.getBalanceofAddress(myWalletAddress));
+
+
+mayanCoin.chain[1].transactions[0].amount = 1;
+
+console.log('Is chain valid ' + mayanCoin.isChainValid());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // console.log('\n Is Chain valid.....' + mayanCoin.isChainValid());
 
 // mayanCoin.minePendingTransactions(myWalletAddress);

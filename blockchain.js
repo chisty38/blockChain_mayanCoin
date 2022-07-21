@@ -53,7 +53,7 @@ class Block{
             this.nonce++;
             this.hash = this.calculateHash();
         }
-        console.log('Block mined: ' + this.hash);
+        console.log('BLOCK MINED: ' + this.hash);
     }
 
     hasValidTransaction(){
@@ -87,7 +87,7 @@ class Blockchain{
         const rewardtx = new Transaction(null, miningrewardAddress, this.miningreward);
         this.pendingTransactions.push(rewardtx);
         
-        let block = new Block(Date.now(), this.pendingTransactions);
+        let block = new Block(Date.now(), this.pendingTransactions, this.getLatestBlock().hash);
         block.mineBlock(this.difficulty);
         console.log('Block successfully mined!');
         this.chain.push(block);
